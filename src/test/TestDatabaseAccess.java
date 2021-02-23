@@ -18,7 +18,7 @@ import controllayer.*;
 //import static org.junit.Assert.*;
 
 /**
- * Inspired by the book: Flexible, Reliable Software Henrik Bærbak Christensen:
+ * Inspired by the book: Flexible, Reliable Software Henrik Bï¿½rbak Christensen:
  * Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
@@ -64,26 +64,34 @@ public class TestDatabaseAccess {
 		DatabasePBuy dbPbuy = new DatabasePBuy();
 		
 		// Act
-		int key = 0; //TODO: Call dbPbuy
+		int key = 0; 
+		try
+		{
+			key = dbPbuy.insertParkingBuy(tempPBuy);
+		}
+		catch (DatabaseLayerException e)
+		{
+			fail("Database Layer Exception");
+		}
 		
 		// Assert
-		assertEquals("Dummy", key > 0);
+		assertTrue(key > 0);
 		
 	}	
 	
 	
-	@Test
-	public void wasRetrievedPriceDatabaselayer() {
+	@Test 
+	public void wasRetrievedPriceDatabaselayer() throws DatabaseLayerException {
 		// Arrange
 		PPrice foundPrice = null;
-		int pZoneId = 2;
+		int parkingZoneId = 2;
 		DatabasePPrice dbPrice = new DatabasePPrice();
-
+		
 		
 		// Act
-
+		foundPrice = dbPrice.getPriceByZoneId(parkingZoneId);
 		// Assert
-		assertEquals("Dummy", 0, 1);
+		assertEquals(foundPrice.getParkingPrice(), 25);
 		
 	}
 	

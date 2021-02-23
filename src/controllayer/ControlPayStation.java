@@ -54,7 +54,7 @@ public class ControlPayStation {
 		IDbPBuy dbBuy = new DatabasePBuy();
 		dbBuy.insertParkingBuy(thisBuy);
 		//
-		ControlReceipt ctrlReceipt = new ControlReceipt(payStation.getTimeBoughtInMinutes());
+		ControlReceipt ctrlReceipt = new ControlReceipt(payStation.getTimeBoughtInMinutes(), payStation.getAmount());
 		
 		reset();	
 		PReceipt buyReceipt = ctrlReceipt.getParkingReceipt();		

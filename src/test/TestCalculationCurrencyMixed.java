@@ -22,15 +22,13 @@ public class TestCalculationCurrencyMixed {
 		ps = new ControlPayStation();
 	}
 
-	/**
-	 * Entering 1 cent and 50 �re should make the display report 4 minutes parking time.
-	 * @throws DatabaseLayerException 
-	 */
+	
 	@Test
-	public void shouldDisplay4MinFor1CentAnd1DKK() throws IllegalCoinException, DatabaseLayerException {
+	public void entering1CentAnd1DKKShouldDisplay6Minutesand14Cents() throws IllegalCoinException, DatabaseLayerException {
 		
-		// Arange
-		int expectedParkingTime = 6;	// In minutes		
+		// Arrange
+		int expectedParkingTime = 6;	// In minutes	
+		double expectedParkingPrice = 14.33d;
 		
 		int coinValueEu = 1;
 		Currency.ValidCurrency coinCurrencyEu = Currency.ValidCurrency.EURO;
@@ -44,9 +42,11 @@ public class TestCalculationCurrencyMixed {
 		ps.addPayment(coinValueEu, coinCurrencyEu, coinTypeEu);
 		ps.addPayment(coinValueDKK, coinCurrencyDKK, coinTypeDKK);
 		int actualParkingTime = ps.getDisplayTime();
+		double actualParkingPrice = ps.getDisplayAmountInCents();
 
 		// Assert
-		assertEquals(expectedParkingTime, actualParkingTime);		
+		assertEquals(expectedParkingTime, actualParkingTime);
+		assertEquals(expectedParkingPrice, actualParkingPrice, 0.01d);
 	}
 
 	

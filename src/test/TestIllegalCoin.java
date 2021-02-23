@@ -33,13 +33,11 @@ public class TestIllegalCoin {
 		ps = new ControlPayStation();
 	}
 
-	/**
-	 * Verify that illegal coins are rejected.
-	 */
 	
-	// Norvegian coin
+	//New code
+	// Norwegian coin
 	@Test
-	public void shouldRejectIllegalCurrencyNokCoinAndTimeDoesntChange() {
+	public void shouldRejectIllegalCurrencyNokCoinAndTimeAndPriceDontChange() {
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
 		assertEquals(ps.getDisplayAmountInCents(), 0);
 		assertEquals(ps.getDisplayTime(), 0);
@@ -48,8 +46,9 @@ public class TestIllegalCoin {
 	}
 	
 	// unknown Euro coin value
+	//New code
 	@Test
-	public void shouldRejectIllegalEuroCoin(){
+	public void shouldRejectIllegalEuroCoinAndTimeAndPriceDontChange(){
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
 		assertEquals(ps.getDisplayAmountInCents(), 0);
 		assertEquals(ps.getDisplayTime(), 0);
@@ -57,7 +56,7 @@ public class TestIllegalCoin {
 	}
 	
 	@Test
-	public void shouldAcceptBothLegalAndIllegalCoinsAndPrintATicketWithTime1() throws DatabaseLayerException, IllegalCoinException {
+	public void shouldAcceptBothLegalAndIllegalCoinsAndPrintATicketWithTime1AndPrice1Cents() throws DatabaseLayerException, IllegalCoinException {
 		//Checks if it's invalid
 		try {
 			ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER);
@@ -69,7 +68,8 @@ public class TestIllegalCoin {
 		}
 		
 		PReceipt receipt = ps.buy();
-		assertEquals(receipt.getValue(), 1);
+		assertEquals(receipt.getMinutesAmount(), 1);
+		assertEquals(receipt.getCentAmount(), 1, 0d);
 		
 	}
 	
@@ -92,7 +92,7 @@ public class TestIllegalCoin {
 		 ps.addPayment(1, ValidCurrency.DKK, ValidCoinType.INTEGER);
 		 
 		 PReceipt receipt = ps.buy();
-		 assertEquals(receipt.getValue(), 6);
+		 assertEquals(receipt.getMinutesAmount(), 6);
 		 
 	}
 	

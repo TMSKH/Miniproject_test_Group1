@@ -26,10 +26,9 @@ public class TestCalculationCurrencyDkk {
 	 */
 	@Test
 	public void entering1DKKShouldDisplay6MinutesAnd13Cents() throws IllegalCoinException {
-		
 		// Arrange
 		int expectedParkingTime = 6;	// In minutes
-		double expectedParkingPrice = 13d;
+		double expectedParkingPrice = 13.33d;
 		
 		int coinValue = 1;
 		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
@@ -37,10 +36,12 @@ public class TestCalculationCurrencyDkk {
 		
 		// Act
 		ps.addPayment(coinValue, coinCurrency, coinType);
+		int actualParkingTime = ps.getDisplayTime();
+		double actualParkingPrice = ps.getDisplayAmountInCents();
 			
 		// Assert
-		assertEquals("Should display 3 min for 50 �re", expectedParkingTime, ps.getDisplayTime());
-		//assertEquals(expectedParkingPrice, )
+		assertEquals("Should display 3 min for 50 �re", expectedParkingTime, actualParkingTime);
+		assertEquals(expectedParkingPrice, actualParkingPrice, 0.01d); //make space for errors
 	}
 
 

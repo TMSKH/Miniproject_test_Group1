@@ -33,7 +33,7 @@ public class TestIllegalCoin {
 	// Norvegian coin
 	public void shouldRejectIllegalCurrencyNokCoinAndTimeDoesntChange() {
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
-		assertEquals(ps.readDisplay(), 0);
+		assertEquals(ps.getDisplayValues(), 0);
 		
 		
 	}
@@ -41,7 +41,7 @@ public class TestIllegalCoin {
 	@Ignore
 	public void shouldRejectIllegalEuroCoin(){
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
-		assertEquals(ps.readDisplay(), 0);
+		assertEquals(ps.getDisplayValues(), 0);
 		
 	}
 }

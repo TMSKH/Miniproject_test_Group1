@@ -8,7 +8,7 @@ import databaselayer.IDbPBuy;
 import databaselayer.DatabasePBuy;
 
 /**
- * Inspired by the book: Flexible, Reliable Software Henrik Bærbak Christensen:
+ * Inspired by the book: Flexible, Reliable Software Henrik Bï¿½rbak Christensen:
  * Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
@@ -65,9 +65,20 @@ public class ControlPayStation {
 	 * Calculate the corresponding parking time in minutes
 	 * (calculated seconds and convert to minutes - rounded up)
 	*/
-	public int readDisplay() {
+	public int getDisplayTime() 
+	{
 		return payStation.getTimeBoughtInMinutes();
-	}	
+	}
+	
+	/**
+	 * New method
+	 * Used to also be able to test displaying the current price
+	 * @return
+	 */
+	public double getDisplayAmountInCents()
+	{
+		return payStation.getAmount();
+	}
 	
 	public void setReady() {
 		reset();

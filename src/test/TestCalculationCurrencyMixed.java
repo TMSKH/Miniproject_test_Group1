@@ -4,6 +4,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import controllayer.*;
+import databaselayer.DatabaseLayerException;
 import modellayer.*;
 
 /**
@@ -23,15 +24,29 @@ public class TestCalculationCurrencyMixed {
 
 	/**
 	 * Entering 1 cent and 50 øre should make the display report 4 minutes parking time.
+	 * @throws DatabaseLayerException 
 	 */
 	@Test
-	public void shouldDisplay4MinFor1CentAnd1Ore() throws IllegalCoinException {
-		// Arrange
+	public void shouldDisplay4MinFor1CentAnd1Ore() throws IllegalCoinException, DatabaseLayerException {
+		
+		// Arange
+		int expectedParkingTime = 4;	// In minutes		
+		
+		int coinValueEu = 1;
+		Currency.ValidCurrency coinCurrencyEu = Currency.ValidCurrency.EURO;
+		Currency.ValidCoinType coinTypeEu = Currency.ValidCoinType.FRACTION;
+		
+		int coinValueDKK = 50;
+		Currency.ValidCurrency coinCurrencyDKK = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinTypeDKK = Currency.ValidCoinType.FRACTION;
 		
 		// Act
+		ps.addPayment(coinValueEu, coinCurrencyEu, coinTypeEu);
+		ps.addPayment(coinValueDKK, coinCurrencyDKK, coinTypeDKK);
+		int actualParkingTime = ps.readDisplay();
 
 		// Assert
-		assertEquals("Dummy", 0, 1);		
+		assertEquals(expectedParkingTime, actualParkingTime);		
 	}
 
 	

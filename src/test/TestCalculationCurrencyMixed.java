@@ -8,7 +8,7 @@ import databaselayer.DatabaseLayerException;
 import modellayer.*;
 
 /**
- * Inspired by the book: Flexible, Reliable Software Henrik Bærbak Christensen:
+ * Inspired by the book: Flexible, Reliable Software Henrik Bï¿½rbak Christensen:
  * Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
@@ -23,22 +23,22 @@ public class TestCalculationCurrencyMixed {
 	}
 
 	/**
-	 * Entering 1 cent and 50 øre should make the display report 4 minutes parking time.
+	 * Entering 1 cent and 50 ï¿½re should make the display report 4 minutes parking time.
 	 * @throws DatabaseLayerException 
 	 */
 	@Test
-	public void shouldDisplay4MinFor1CentAnd1Ore() throws IllegalCoinException, DatabaseLayerException {
+	public void shouldDisplay4MinFor1CentAnd1DKK() throws IllegalCoinException, DatabaseLayerException {
 		
 		// Arange
-		int expectedParkingTime = 4;	// In minutes		
+		int expectedParkingTime = 6;	// In minutes		
 		
 		int coinValueEu = 1;
 		Currency.ValidCurrency coinCurrencyEu = Currency.ValidCurrency.EURO;
 		Currency.ValidCoinType coinTypeEu = Currency.ValidCoinType.FRACTION;
 		
-		int coinValueDKK = 50;
+		int coinValueDKK = 1;
 		Currency.ValidCurrency coinCurrencyDKK = Currency.ValidCurrency.DKK;
-		Currency.ValidCoinType coinTypeDKK = Currency.ValidCoinType.FRACTION;
+		Currency.ValidCoinType coinTypeDKK = Currency.ValidCoinType.INTEGER;
 		
 		// Act
 		ps.addPayment(coinValueEu, coinCurrencyEu, coinTypeEu);

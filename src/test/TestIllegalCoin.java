@@ -1,5 +1,8 @@
 package test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.*;
 
 import controllayer.*;
@@ -27,29 +30,18 @@ public class TestIllegalCoin {
 	 * Verify that illegal coins are rejected.
 	 */
 	
-	// Norwegian coin
-	@Test(expected = IllegalCoinException.class)
-	public void shouldRejectIllegalCurrencyNokCoin() throws IllegalCoinException {
-		
-		//Arrange
-		Coin coin = new Coin(1, ValidCurrency.NOK, ValidCoinType.INTEGER);
-		Validation validation = new Validation();
-		
-		//ACT
-		//Nothing
-		
-		//Assert
-		validation.validateCoin(coin);
+	// Norvegian coin
+	public void shouldRejectIllegalCurrencyNokCoinAndTimeDoesntChange() {
+		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
+		assertEquals(ps.readDisplay(), 0);
 		
 		
 	}
 	// unknown Euro coin value
-	@Test(expected = IllegalCoinException.class)
-	public void shouldRejectIllegalEuroCoin() throws IllegalCoinException {
+	@Ignore
+	public void shouldRejectIllegalEuroCoin(){
+		assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
+		assertEquals(ps.readDisplay(), 0);
 		
-		Coin coin = new Coin(3, ValidCurrency.EURO, ValidCoinType.INTEGER);
-		Validation validation = new Validation();
-		
-		validation.validateCoin(coin);
 	}
 }

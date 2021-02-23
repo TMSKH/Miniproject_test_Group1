@@ -6,10 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.*;
 
 import controllayer.*;
-import modellayer.Coin;
 import modellayer.Currency.ValidCoinType;
 import modellayer.Currency.ValidCurrency;
-import utility.Validation;
 
 /**
  * Inspired by the book: Flexible, Reliable Software Henrik B�rbak Christensen:
@@ -33,15 +31,16 @@ public class TestIllegalCoin {
 	// Norvegian coin
 	public void shouldRejectIllegalCurrencyNokCoinAndTimeDoesntChange() {
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
-		assertEquals(ps.getDisplayValues(), 0);
-		
+		assertEquals(ps.getDisplayAmountInCents(), 0);
+		assertEquals(ps.getDisplayTime(), 0);
 		
 	}
 	// unknown Euro coin value
 	@Ignore
 	public void shouldRejectIllegalEuroCoin(){
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
-		assertEquals(ps.getDisplayValues(), 0);
+		assertEquals(ps.getDisplayAmountInCents(), 0);
+		assertEquals(ps.getDisplayTime(), 0);
 		
 	}
 }

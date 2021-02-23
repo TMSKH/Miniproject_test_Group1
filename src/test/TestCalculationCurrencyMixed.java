@@ -43,7 +43,7 @@ public class TestCalculationCurrencyMixed {
 		// Act
 		ps.addPayment(coinValueEu, coinCurrencyEu, coinTypeEu);
 		ps.addPayment(coinValueDKK, coinCurrencyDKK, coinTypeDKK);
-		int actualParkingTime = ps.getDisplayValues();
+		int actualParkingTime = ps.getDisplayTime();
 
 		// Assert
 		assertEquals(expectedParkingTime, actualParkingTime);		

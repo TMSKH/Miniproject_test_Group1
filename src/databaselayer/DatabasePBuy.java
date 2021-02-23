@@ -22,7 +22,7 @@ public class DatabasePBuy implements IDbPBuy {
 
 		String baseInsert = "insert into PBuy (buyTime, duration, payedAmount, pPaystation_id) values ";
 		baseInsert += "(" + sqldate + ", " + parkingDuration + ", " + payedCentAmount + ", " + payStation.getId() + ")";
-		System.out.println(baseInsert);
+		//System.out.println(baseInsert);
 
 		try {
 			Statement stmt = con.createStatement();
@@ -53,7 +53,7 @@ public class DatabasePBuy implements IDbPBuy {
 			DBConnection.closeConnection();
 		}
 		
-		System.out.println("Inserted key: " + insertedKey);
+		//System.out.println("Inserted key: " + insertedKey);
 		
 		return insertedKey;
 
@@ -67,7 +67,7 @@ public class DatabasePBuy implements IDbPBuy {
 		PreparedStatement pstmt = null;
 
 		String baseDelete = "delete from PBuy where id = ?";
-		System.out.println(baseDelete);
+		//System.out.println(baseDelete);
 
 		try {
 			con = DBConnection.getInstance().getDBcon();

@@ -64,6 +64,7 @@ public class TestDatabaseAccess {
 		DatabasePBuy dbPbuy = new DatabasePBuy();
 		
 		// Act
+		
 		int key = 0; 
 		try
 		{
@@ -75,12 +76,13 @@ public class TestDatabaseAccess {
 		}
 		
 		// Assert
-		assertTrue(key > 0);
+		assertEquals(true, key > 0);
+
 		
 	}	
 	
-	
-	@Test 
+
+	@Test
 	public void wasRetrievedPriceDatabaselayer() throws DatabaseLayerException {
 		// Arrange
 		PPrice foundPrice = null;

@@ -16,7 +16,7 @@ public class DatabasePPrice implements IDbPPrice {
 	}
 	
 	public PPrice getPriceByZoneId(int zoneId) throws DatabaseLayerException {
-		int foundPrice = null;
+		PPrice foundPrice = null;
 		
 		Calendar calendar = Calendar.getInstance();
 		java.sql.Date dateNow = new java.sql.Date(calendar.getTime().getTime());
@@ -39,9 +39,8 @@ public class DatabasePPrice implements IDbPPrice {
 			// New code *---------------------------------------------*
 			if (rs.next()) {
 
-				System.out.println(rs.getInt(1));
-				System.out.println(rs.getInt(1));
-				foundPrice = rs.getInt(0);
+				foundPrice = new PPrice();
+				foundPrice.setParkingPrice(rs.getInt("price"));
 			}
 			// *---------------------------------------------*
 			stmt.close();

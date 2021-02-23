@@ -69,6 +69,7 @@ public class TestDatabaseAccess {
 		try
 		{
 			key = dbPbuy.insertParkingBuy(tempPBuy);
+			tempPBuy.setId(key); //Setting the tempPBuy ID to KEY so we can delete it
 		}
 		catch (DatabaseLayerException e)
 		{
@@ -102,12 +103,13 @@ public class TestDatabaseAccess {
 	public void wasRetrievedPriceControllayer() {
 
 		// Arrange
-
+		ControlPrice ctrPrice = new ControlPrice();
+		
 		
 		// Act
 
 		// Assert
-		assertEquals("Dummy", 0, 1);
+		assertEquals(ctrPrice.getCurrentPrice().getParkingPrice(), 24);
 		
 	}	
 	
@@ -120,7 +122,6 @@ public class TestDatabaseAccess {
 	
 	@AfterClass
 	public static void cleanUpWhenFinish() {
-		// 		
 		// Arrange
 		DatabasePBuy dbPbuy = new DatabasePBuy();
 		int numDeleted = 0;
@@ -133,7 +134,6 @@ public class TestDatabaseAccess {
 		} finally {
 			DBConnection.closeConnection();
 		}
-	
 		// Assert
 		assertEquals("One row deleted", 1, numDeleted );
 	}	

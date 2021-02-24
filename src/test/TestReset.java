@@ -25,6 +25,7 @@ public class TestReset {
 	/**
 	 * Verify that the pay station is cleared and display shows 0 after a buy scenario
 	 * @throws DatabaseLayerException 
+	 * Case: BTExtra
 	 */
 	@Test
 	public void shouldClearAfterBuy() throws IllegalCoinException, DatabaseLayerException {
@@ -46,6 +47,7 @@ public class TestReset {
 
 	/**
 	 * Verify that cancel() clears the pay station
+	 * Case: BT3
 	 */
 	@Test
 	public void shouldClearAfterCancel() throws IllegalCoinException {

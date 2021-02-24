@@ -33,7 +33,9 @@ public class TestDatabaseAccess {
 		con = DBConnection.getInstance();
 	}
 	
-	
+	/**
+	 * Case: DC1
+	 */
 	@Test
 	public void wasConnected() {
 		assertNotNull("Connected - connection cannot be null", con);
@@ -47,6 +49,9 @@ public class TestDatabaseAccess {
 	}
 	
 	
+	/**
+	 * Case: DC2
+	 */
 	@Test
 	public void wasInsertedBuy() {
 		
@@ -82,7 +87,11 @@ public class TestDatabaseAccess {
 		
 	}	
 	
-
+	/**
+	 * 
+	 * @throws DatabaseLayerException
+	 * Case: DC3
+	 */
 	@Test
 	public void wasRetrievedPriceDatabaselayer() throws DatabaseLayerException {
 		// Arrange
@@ -98,7 +107,9 @@ public class TestDatabaseAccess {
 		
 	}
 	
-	
+	/**
+	 * Case: DC4
+	 */
 	@Test
 	public void wasRetrievedPriceControllayer() {
 

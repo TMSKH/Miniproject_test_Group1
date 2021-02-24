@@ -22,7 +22,12 @@ public class TestCalculationCurrencyMixed {
 		ps = new ControlPayStation();
 	}
 
-	
+	/**
+	 * 
+	 * @throws IllegalCoinException
+	 * @throws DatabaseLayerException
+	 * Case: AP3
+	 */
 	@Test
 	public void entering1CentAnd1DKKShouldDisplay6Minutesand14Cents() throws IllegalCoinException, DatabaseLayerException {
 		

@@ -34,8 +34,10 @@ public class TestIllegalCoin {
 	}
 
 	
-	//New code
 	// Norwegian coin
+	/**
+	 * Case: AP4
+	 */
 	@Test
 	public void shouldRejectIllegalCurrencyNokCoinAndTimeAndPriceDontChange() {
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
@@ -73,6 +75,9 @@ public class TestIllegalCoin {
 		
 	}
 	
+	/**
+	 * Case: AP5
+	 */
 	@Test
 	public void shouldThrowExceptionForIllegalCoinAndAcceptValidCoins() {
 		

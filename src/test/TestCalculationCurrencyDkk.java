@@ -22,6 +22,12 @@ public class TestCalculationCurrencyDkk {
 	}
 
 	//new code
+	
+	/**
+	 * 
+	 * @throws IllegalCoinException
+	 * Case: AP2
+	 */
 	@Test
 	public void entering1DKKShouldDisplay6MinutesAnd13Cents() throws IllegalCoinException {
 		// Arrange

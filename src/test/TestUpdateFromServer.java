@@ -37,9 +37,12 @@ public class TestUpdateFromServer {
 	@Test
 	public void checkIfDatabaseUpdates() throws DatabaseLayerException, SQLException {
 		
+		//Arrange
 		int zoneID = 1;
 		int DBPrice = 0;
-
+		
+		
+		//Act
 		String select = "SELECT price FROM PPrice WHERE pZone_id = '"+zoneID+"' AND startTime < '" + dateNow + "' ";
 		preparedstatement = con.prepareStatement(select);
 		resultset = preparedstatement.executeQuery();
@@ -47,10 +50,9 @@ public class TestUpdateFromServer {
 			DBPrice = resultset.getInt(1);
 		}
 
-		
-		
 		PPrice price = ctrPrice.getPriceRemote(zoneID);
 		
+		//Assert
 		assertEquals(DBPrice, price.getParkingPrice());
 	}
 	

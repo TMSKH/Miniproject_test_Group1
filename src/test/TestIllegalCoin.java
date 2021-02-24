@@ -77,18 +77,28 @@ public class TestIllegalCoin {
 	
 	/**
 	 * Case: AP5
+	 * new code
 	 */
 	@Test
-	public void shouldThrowExceptionForIllegalCoinAndAcceptValidCoins() {
+	public void shouldThrowExceptionForIllegalCoinAndAcceptValidCoinsPrice1MinuteCost2Cents() {
 		
+		//Arrange
+		int expectedParkingTime = 1;
+		double expectedParkingPrice = 2d;
+		
+		//Act
 		//Valid coin
 		assertDoesNotThrow(() -> ps.addPayment(1, ValidCurrency.EURO, ValidCoinType.FRACTION));
 		//InvalidCoin
 		assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
 		//Valid coin
 		assertDoesNotThrow(() -> ps.addPayment(1, ValidCurrency.EURO, ValidCoinType.FRACTION));
+		int actualParkingTime = ps.getDisplayTime();
+		double actualParkingPrice = ps.getDisplayAmountInCents();
 		
-		assertEquals(1, ps.getDisplayTime());
+		//Assert
+		assertEquals(expectedParkingTime, actualParkingTime, "Parking time should be 1 minute.");
+		assertEquals(expectedParkingPrice, actualParkingPrice, 0d, "Parking should cost 2 cents.");
 	}
 	
 	@Test

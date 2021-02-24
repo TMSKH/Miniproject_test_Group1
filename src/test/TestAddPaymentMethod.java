@@ -1,12 +1,13 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import controllayer.ControlPayStation;
 import controllayer.IllegalCoinException;
@@ -20,7 +21,7 @@ public class TestAddPaymentMethod {
 	private ControlPayStation ps;
 
 	/** Fixture for pay station testing. */
-	@Before
+	@BeforeEach
 	public void setUp() {
 		ps = new ControlPayStation();
 	}
@@ -40,8 +41,8 @@ public class TestAddPaymentMethod {
 		// No action
 		
 		// Assert
-		assertEquals("Should display 0 min for no coins", expectedParkingTime, ps.getDisplayTime());
-		assertEquals("Should display 0 cents for no coins", expectedCoinAmount, ps.getDisplayAmountInCents(), 0d);
+		assertEquals(expectedParkingTime, ps.getDisplayTime(), "Should display 0 min for no coins");
+		assertEquals(expectedCoinAmount, ps.getDisplayAmountInCents(), 0d, "Should display 0 cents for no coins");
 	}	
 
 	/**
@@ -90,7 +91,7 @@ public class TestAddPaymentMethod {
 		double actualParkingPrice = ps.getDisplayAmountInCents();
 			
 		// Assert
-		assertEquals("Should display 3 min for 50 �re", expectedParkingTime, actualParkingTime);
+		assertEquals(expectedParkingTime, actualParkingTime, "Should display 3 min for 50 �re");
 		assertEquals(expectedParkingPrice, actualParkingPrice, 0.01d); //make space for errors
 	}
 	
@@ -157,7 +158,7 @@ public class TestAddPaymentMethod {
 	
 	
 	/** Fixture for pay station testing. */
-	@After
+	@AfterEach
 	public void cleanUp() {
 		ps.setReady();
 	}	

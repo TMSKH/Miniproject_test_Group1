@@ -1,7 +1,10 @@
 package test;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import controllayer.*;
 import modellayer.*;
@@ -16,7 +19,7 @@ public class TestCalculationCurrencyEuro {
 	private ControlPayStation ps;
 
 	/** Fixture for pay station testing. */
-	@Before
+	@BeforeEach
 	public void setUp() {
 		ps = new ControlPayStation();
 	}
@@ -35,8 +38,8 @@ public class TestCalculationCurrencyEuro {
 		// No action
 		
 		// Assert
-		assertEquals("Should display 0 min for no coins", expectedParkingTime, ps.getDisplayTime());
-		assertEquals("Should display 0 cents for no coins", expectedCoinAmount, ps.getDisplayAmountInCents(), 0d);
+		assertEquals(expectedParkingTime, ps.getDisplayTime(), "Should display 0 min for no coins");
+		assertEquals(expectedCoinAmount, ps.getDisplayAmountInCents(), 0d, "Should display 0 cents for no coins");
 	}	
 
 	/**

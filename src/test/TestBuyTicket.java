@@ -3,9 +3,9 @@ package test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import controllayer.ControlPayStation;
 import controllayer.IllegalCoinException;
@@ -19,7 +19,7 @@ public class TestBuyTicket {
 
 	ControlPayStation ps;
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		ps = new ControlPayStation();
 		
@@ -104,7 +104,7 @@ public class TestBuyTicket {
 	
 	
 	
-	@After
+	@AfterEach
 	public void exit() {
 		
 	}

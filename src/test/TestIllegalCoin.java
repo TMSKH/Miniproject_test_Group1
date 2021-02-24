@@ -40,11 +40,18 @@ public class TestIllegalCoin {
 	 */
 	@Test
 	public void shouldRejectIllegalCurrencyNokCoinAndTimeAndPriceDontChange() {
-		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
-		assertEquals(ps.getDisplayAmountInCents(), 0);
-		assertEquals(ps.getDisplayTime(), 0);
-
+		//Arrange
+		int expectedParkingTime = 0;
+		double expectedParkingPrice = 0d;
 		
+		//Act
+		int actualParkingTime = ps.getDisplayTime();
+		double actualParkingPrice = ps.getDisplayAmountInCents();			
+		
+		//Assert
+		assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
+		assertEquals(expectedParkingTime, actualParkingTime, "Parking time should be 0 minutes.");
+		assertEquals(expectedParkingPrice, actualParkingPrice, "Parking price should be 0 cents.");
 	}
 	
 	// unknown Euro coin value

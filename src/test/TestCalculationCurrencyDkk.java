@@ -21,14 +21,12 @@ public class TestCalculationCurrencyDkk {
 		ps = new ControlPayStation();
 	}
 
-	/**
-	 * Entering 50 �re should make the display report 3 minutes parking time.
-	 */
+	//new code
 	@Test
 	public void entering1DKKShouldDisplay6MinutesAnd13Cents() throws IllegalCoinException {
 		// Arrange
 		int expectedParkingTime = 6;	// In minutes
-		double expectedParkingPrice = 13.33d;
+		double expectedParkingPrice = 13.33d; 
 		
 		int coinValue = 1;
 		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;

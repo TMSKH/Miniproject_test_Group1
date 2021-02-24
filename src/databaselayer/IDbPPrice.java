@@ -1,11 +1,11 @@
 package databaselayer;
 
-import modellayer.PPrice;
+import modellayer.ParkingPrice;
 
 public interface IDbPPrice {
 
-	public PPrice getCurrentPrice();
+	public ParkingPrice getCurrentPrice();
     // Get Price by parking zone id
-	public PPrice getPriceByZoneId(int zoneId) throws DatabaseLayerException;
+	public ParkingPrice getPriceByZoneId(int zoneId) throws DatabaseLayerException;
     
 }

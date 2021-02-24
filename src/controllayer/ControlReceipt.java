@@ -1,6 +1,6 @@
 package controllayer;
 
-import modellayer.PReceipt;
+import modellayer.ParkingReceipt;
 
 /**
  * Inspired by the book: Flexible, Reliable Software
@@ -9,17 +9,17 @@ import modellayer.PReceipt;
 
 public class ControlReceipt {
 	
-	private PReceipt buyReceipt = null;
+	private ParkingReceipt buyReceipt = null;
 
 	public ControlReceipt(int minutesAmount, double centAmount) {
-		buyReceipt = new PReceipt(minutesAmount, centAmount);
+		buyReceipt = new ParkingReceipt(minutesAmount, centAmount);
 	}
   
 	public int getParkingTicketValue() {
 		return buyReceipt.getMinutesAmount();
 	}
 
-	public PReceipt getParkingReceipt() {
+	public ParkingReceipt getParkingReceipt() {
 		return buyReceipt;
 	}
 

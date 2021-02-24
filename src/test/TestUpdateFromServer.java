@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import controllayer.ControlPrice;
 import databaselayer.DBConnection;
 import databaselayer.DatabaseLayerException;
-import modellayer.PPrice;
+import modellayer.ParkingPrice;
 
 public class TestUpdateFromServer {
 	
@@ -55,7 +55,7 @@ public class TestUpdateFromServer {
 			DBPrice = resultset.getInt(1);
 		}
 
-		PPrice price = ctrPrice.getPriceRemote(zoneID);
+		ParkingPrice price = ctrPrice.getPriceRemote(zoneID);
 		
 		//Assert
 		assertEquals(DBPrice, price.getParkingPrice());

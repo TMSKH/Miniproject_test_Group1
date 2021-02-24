@@ -3,17 +3,17 @@ package databaselayer;
 import java.sql.*;
 import java.lang.NullPointerException;
 
-import modellayer.PBuy;
-import modellayer.PPayStation;
+import modellayer.ParkingBuy;
+import modellayer.ParkingPayStation;
 
 public class DatabasePBuy implements IDbPBuy {
 
 	// example using embedded SQL
-	public int insertParkingBuy(PBuy parkingBuy) throws DatabaseLayerException {
+	public int insertParkingBuy(ParkingBuy parkingBuy) throws DatabaseLayerException {
 		int insertedKey = 1;
 		
 		java.sql.Date sqldate = java.sql.Date.valueOf(parkingBuy.getBuyTime());
-		PPayStation payStation = parkingBuy.getAssociatedPaystation();
+		ParkingPayStation payStation = parkingBuy.getAssociatedPaystation();
 		
 		int parkingDuration = payStation.getTimeBoughtInMinutes();
 		double payedCentAmount = payStation.getAmount();
@@ -60,7 +60,7 @@ public class DatabasePBuy implements IDbPBuy {
 	}
 
 	// example using prepared stmt
-	public int deleteParkingBuy(PBuy parkingBuy) throws DatabaseLayerException {
+	public int deleteParkingBuy(ParkingBuy parkingBuy) throws DatabaseLayerException {
 		int numRowsDeleted = 0;
 
 		Connection con = null;

@@ -14,11 +14,11 @@ import databaselayer.DatabasePBuy;
 
 public class ControlPayStation {
 
-	private PPayStation payStation;
+	private ParkingPayStation payStation;
 	private ControlPrice controlPrice;
 	
 	public ControlPayStation() {
-		this.payStation = new PPayStation(1, "P-423E");
+		this.payStation = new ParkingPayStation(1, "P-423E");
 		this.controlPrice = new ControlPrice();
 	}
 
@@ -36,17 +36,17 @@ public class ControlPayStation {
 					"Invalid coin: " + currency.toString() + ", " + coinType.toString() + ", " + amount);
 		}
 		
-		PPrice currentPrice = controlPrice.getCurrentPrice();
+		ParkingPrice currentPrice = controlPrice.getCurrentPrice();
 		// Add amount
 		payStation.addAmount(coin, currentPrice);	
 	}
 
 	// Process the buy
-	public PReceipt buy() throws DatabaseLayerException {
+	public ParkingReceipt buy() throws DatabaseLayerException {
 		LocalDate currentTime = java.time.LocalDate.now();
 		
 		// create buy
-		PBuy thisBuy = new PBuy();
+		ParkingBuy thisBuy = new ParkingBuy();
 		thisBuy.setAssociatedPaystation(payStation);
 		thisBuy.setBuyTime(currentTime);
 		
@@ -57,7 +57,7 @@ public class ControlPayStation {
 		ControlReceipt ctrlReceipt = new ControlReceipt(payStation.getTimeBoughtInMinutes(), payStation.getAmount());
 		
 		reset();	
-		PReceipt buyReceipt = ctrlReceipt.getParkingReceipt();		
+		ParkingReceipt buyReceipt = ctrlReceipt.getParkingReceipt();		
 		return buyReceipt;
 	}
 

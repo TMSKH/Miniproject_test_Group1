@@ -4,32 +4,32 @@ import java.util.Date;
 
 /**
  * Inspired by the book: Flexible, Reliable Software
- * Henrik Bærbak Christensen: Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
+ * Henrik Bï¿½rbak Christensen: Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
-public class PPrice {
+public class ParkingPrice {
 	
 	// Parkingtime in seconds / 1 cent (Currency: Euro)
 	private int price;	
 	// Price depends on the pay stations parkingzone
-	private PZone parkingZone;	
+	private ParkingZone parkingZone;	
 	// Exchange rate 1 Euro to DKK
 	private double exchangeEuroDkk;
 	private Date startTime;
 
 	// Hard coded values
-	public PPrice() {
+	public ParkingPrice() {
 		this.price = 24;
-		this.parkingZone = new PZone();
+		this.parkingZone = new ParkingZone();
 		this.exchangeEuroDkk = 7.5;
 	}
 
-	public PPrice(int parkingPrice, PZone parkingZone) {
+	public ParkingPrice(int parkingPrice, ParkingZone parkingZone) {
 		this.price = parkingPrice;
 		this.parkingZone = parkingZone;
 	}
 	
-	public PPrice(int parkingPrice, PZone parkingZone, double exchangeEuroDkk) {
+	public ParkingPrice(int parkingPrice, ParkingZone parkingZone, double exchangeEuroDkk) {
 		this.price = parkingPrice;
 		this.parkingZone = parkingZone;
 		this.exchangeEuroDkk = exchangeEuroDkk;
@@ -43,11 +43,11 @@ public class PPrice {
 		this.price = parkingPrice;
 	}
 
-	public PZone getParkingZone() {
+	public ParkingZone getParkingZone() {
 		return parkingZone;
 	}
 
-	public void setParkingZone(PZone parkingZone) {
+	public void setParkingZone(ParkingZone parkingZone) {
 		this.parkingZone = parkingZone;
 	}
 

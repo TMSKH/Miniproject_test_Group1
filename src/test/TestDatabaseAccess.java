@@ -33,7 +33,7 @@ import controllayer.*;
 public class TestDatabaseAccess {
 	
 	DBConnection con = null;
-	static PBuy tempPBuy;
+	static ParkingBuy tempPBuy;
 
 	/** Fixture for pay station testing. */
 	@BeforeEach
@@ -67,9 +67,9 @@ public class TestDatabaseAccess {
 		LocalDate timeNow = java.time.LocalDate.now();
 		double payedCentAmount = 100;
 		
-		tempPBuy = new PBuy();
+		tempPBuy = new ParkingBuy();
 		
-		PPayStation pStat = new PPayStation(1, "P-423E");
+		ParkingPayStation pStat = new ParkingPayStation(1, "P-423E");
 		pStat.setAmount(payedCentAmount);
 		tempPBuy.setAssociatedPaystation(pStat);
 		tempPBuy.setBuyTime(timeNow);
@@ -103,7 +103,7 @@ public class TestDatabaseAccess {
 	@Test
 	public void wasRetrievedPriceDatabaselayer() throws DatabaseLayerException {
 		// Arrange
-		PPrice foundPrice = null;
+		ParkingPrice foundPrice = null;
 		int parkingZoneId = 2;
 		DatabasePPrice dbPrice = new DatabasePPrice();
 		

@@ -11,12 +11,12 @@ import modellayer.*;
 public class DatabasePPrice implements IDbPPrice {
 	
 	//Hardcoded for now. TODO: Use database
-	public PPrice getCurrentPrice() {
-		return new PPrice();
+	public ParkingPrice getCurrentPrice() {
+		return new ParkingPrice();
 	}
 	
-	public PPrice getPriceByZoneId(int zoneId) throws DatabaseLayerException {
-		PPrice foundPrice = null;
+	public ParkingPrice getPriceByZoneId(int zoneId) throws DatabaseLayerException {
+		ParkingPrice foundPrice = null;
 		
 		Calendar calendar = Calendar.getInstance();
 		java.sql.Date dateNow = new java.sql.Date(calendar.getTime().getTime());
@@ -39,7 +39,7 @@ public class DatabasePPrice implements IDbPPrice {
 			// New code *---------------------------------------------*
 			if (rs.next()) {
 
-				foundPrice = new PPrice();
+				foundPrice = new ParkingPrice();
 				foundPrice.setParkingPrice(rs.getInt("price"));
 			}
 			// *---------------------------------------------*

@@ -1,19 +1,19 @@
 package modellayer;
 
-public class PZone {
+public class ParkingZone {
 	
 	// Id of actual parkingzone
 	private int id;
 	private String name;
 
 	// Hard coded value
-	public PZone() {
+	public ParkingZone() {
 		this.id = 2;
 		this.name = "Zone B";
 	}
 	
 	// Dynamicallt set parkingzone
-	public PZone(int pZoneIdent, String pZoneName) {
+	public ParkingZone(int pZoneIdent, String pZoneName) {
 		this.id = pZoneIdent;
 		this.name = pZoneName;
 	}	

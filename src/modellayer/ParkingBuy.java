@@ -3,11 +3,11 @@ package modellayer;
 import java.time.LocalDate;
 
 /**
- * Inspired by the book: Flexible, Reliable Software Henrik Bærbak Christensen:
+ * Inspired by the book: Flexible, Reliable Software Henrik Bï¿½rbak Christensen:
  * Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
-public class PBuy {
+public class ParkingBuy {
 
 	// Buy ident
 	private long id;
@@ -18,16 +18,16 @@ public class PBuy {
 	// Payed amount in cents
 	private double payedAmount;
 	// PayStation that generated buy 
-	private PPayStation associatedPaystation;
+	private ParkingPayStation associatedPaystation;
 	
 	// Constructor
-	public PBuy() {
+	public ParkingBuy() {
 		
 	}
-	public PBuy(int foundId) {
+	public ParkingBuy(int foundId) {
 		id = foundId;
 	}	
-	public PBuy(LocalDate buyTime, int parkingDuration, double payedCentAmount) {
+	public ParkingBuy(LocalDate buyTime, int parkingDuration, double payedCentAmount) {
 		this.buyTime = buyTime;
 		this.duration = parkingDuration;
 		this.payedAmount = payedCentAmount;
@@ -66,11 +66,11 @@ public class PBuy {
 		this.payedAmount = payedCentAmount;
 	}
 
-	public PPayStation getAssociatedPaystation() {
+	public ParkingPayStation getAssociatedPaystation() {
 		return associatedPaystation;
 	}
 
-	public void setAssociatedPaystation(PPayStation associatedPaystation) {
+	public void setAssociatedPaystation(ParkingPayStation associatedPaystation) {
 		this.associatedPaystation = associatedPaystation;
 	}
 	

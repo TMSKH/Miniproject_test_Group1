@@ -3,7 +3,7 @@ package controllayer;
 import databaselayer.DatabaseLayerException;
 import databaselayer.IDbPPrice;
 import databaselayer.DatabasePPrice;
-import modellayer.PPrice;
+import modellayer.ParkingPrice;
 
 public class ControlPrice {
 	
@@ -13,17 +13,17 @@ public class ControlPrice {
 		this.dbPrice = new DatabasePPrice();
 	}
 	
-	public PPrice getCurrentPrice() {
+	public ParkingPrice getCurrentPrice() {
 		
-		PPrice currentPrice = new PPrice(); //hardcoded
+		ParkingPrice currentPrice = new ParkingPrice(); //hardcoded
 		
 		return currentPrice;
 	}
 	
-	public PPrice getPriceRemote(int zoneId) throws DatabaseLayerException {
+	public ParkingPrice getPriceRemote(int zoneId) throws DatabaseLayerException {
 		
 		// Get price from Parkingsystem DB
-		PPrice readPrice = dbPrice.getPriceByZoneId(zoneId);
+		ParkingPrice readPrice = dbPrice.getPriceByZoneId(zoneId);
 		//
 		return readPrice;
 	}

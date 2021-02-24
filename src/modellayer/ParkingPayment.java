@@ -2,15 +2,15 @@ package modellayer;
 
 import controllayer.IllegalCoinException;
 
-public class PPayment {
+public class ParkingPayment {
 
 	private double amount = 0;
 	
-	public PPayment() {
+	public ParkingPayment() {
 		
 	}
 	
-	public PPayment(double amount) {
+	public ParkingPayment(double amount) {
 		this.amount = amount;
 	}
 	
@@ -28,7 +28,7 @@ public class PPayment {
 		double valueInCent = 0;
 
 		if (currency == Currency.ValidCurrency.DKK) {
-			PPrice nowPrice = new PPrice();
+			ParkingPrice nowPrice = new ParkingPrice();
 			valueInCent = getDkkCoinValueInCent(amount, coinType, nowPrice);
 		} else {
 			valueInCent = getEuroCoinValueInCent(amount, coinType);
@@ -38,7 +38,7 @@ public class PPayment {
 	}
 	
 	public int getTimeBoughtInMinutes() {
-		PPrice aPrice = new PPrice();
+		ParkingPrice aPrice = new ParkingPrice();
 		int timeBoughtInMinutes = 0;
 
 		double timeBoughtInSeconds = this.amount * aPrice.getParkingPrice();
@@ -156,7 +156,7 @@ public class PPayment {
 		return valueInCent;
 	}
 
-	private double getDkkCoinValueInCent(double coinValue, Currency.ValidCoinType coinType, PPrice price) {
+	private double getDkkCoinValueInCent(double coinValue, Currency.ValidCoinType coinType, ParkingPrice price) {
 		double valueInCent = 0;
 
 		if (coinType == Currency.ValidCoinType.INTEGER) {

@@ -5,12 +5,12 @@ package modellayer;
  * Henrik B�rbak Christensen: Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
-public class PReceipt {
+public class ParkingReceipt {
   
 	private int minutesAmount; //previously called value
 	private double centAmount; //new field so we can now display the price on the receipt
 	
-	public PReceipt(int minutesAmount, double centAmount) 
+	public ParkingReceipt(int minutesAmount, double centAmount) 
 	{
 		this.minutesAmount = minutesAmount;
 		this.centAmount = centAmount;

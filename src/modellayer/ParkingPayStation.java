@@ -6,10 +6,10 @@ import utility.Validation;
 
 /**
  * Inspired by the book: Flexible, Reliable Software
- * Henrik Bærbak Christensen: Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
+ * Henrik Bï¿½rbak Christensen: Flexible, Reliable Software. Taylor and Francis Group, LLC 2010
  */
 
-public class PPayStation {
+public class ParkingPayStation {
 	
 	// PayStation ident
 	private int id;	
@@ -20,7 +20,7 @@ public class PPayStation {
 	private ControlPrice controlPrice;
 	
 	
-	public PPayStation(int id, String payStationModel) {
+	public ParkingPayStation(int id, String payStationModel) {
 		this.id = id;
 		this.payStationModel = payStationModel;
 		
@@ -51,7 +51,7 @@ public class PPayStation {
 		this.amount = amount;
 	}
 	
-	public void addAmount(Coin coin, PPrice currentPrice) {
+	public void addAmount(Coin coin, ParkingPrice currentPrice) {
 		
 		Currency.ValidCurrency currency = coin.getCurrency();
 		
@@ -69,7 +69,7 @@ public class PPayStation {
 	
 	public int getTimeBoughtInMinutes() {
 		
-		PPrice aPrice = controlPrice.getCurrentPrice();
+		ParkingPrice aPrice = controlPrice.getCurrentPrice();
 		int timeBoughtInMinutes = 0;
 
 		double timeBoughtInSeconds = this.amount * aPrice.getParkingPrice();
@@ -97,7 +97,7 @@ public class PPayStation {
 		return valueInCent;
 	}
 
-	private double getDkkCoinValueInCent(Coin coin, PPrice price) {
+	private double getDkkCoinValueInCent(Coin coin, ParkingPrice price) {
 		double valueInCent = 0;
 		Currency.ValidCoinType coinType = coin.getCoinType();
 		double coinValue = coin.getAmount();

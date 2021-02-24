@@ -11,7 +11,7 @@ import controllayer.ControlPayStation;
 import controllayer.IllegalCoinException;
 import databaselayer.DatabaseLayerException;
 import modellayer.Currency;
-import modellayer.PReceipt;
+import modellayer.ParkingReceipt;
 import modellayer.Currency.ValidCoinType;
 import modellayer.Currency.ValidCurrency;
 
@@ -74,7 +74,7 @@ public class TestBuyTicket {
 		// Act
 		ps.addPayment(coinValue, dkkCoinCurrency, dkkCoinType);
 		ps.addPayment(dkkCoinValue, euroCoinCurrency, euroCoinType);
-		PReceipt receipt = ps.buy();
+		ParkingReceipt receipt = ps.buy();
 
 		// Assert
 		assertEquals(expectedParkingPrice, receipt.getCentAmount(),0.5d);	
@@ -99,7 +99,7 @@ public class TestBuyTicket {
 			ps.addPayment(1, ValidCurrency.EURO, ValidCoinType.FRACTION);
 		}
 		
-		PReceipt receipt = ps.buy();
+		ParkingReceipt receipt = ps.buy();
 		assertEquals(receipt.getMinutesAmount(), 1);
 		assertEquals(receipt.getCentAmount(), 1, 0d);
 		

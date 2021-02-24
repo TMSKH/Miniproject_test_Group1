@@ -1,9 +1,17 @@
 package test;
 
-import static org.junit.Assert.*;
 
-import org.junit.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.time.LocalDate;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 //import controllayer.ControlPayStation;
 //import controllayer.Currency;
@@ -28,7 +36,7 @@ public class TestDatabaseAccess {
 	static PBuy tempPBuy;
 
 	/** Fixture for pay station testing. */
-	@Before
+	@BeforeEach
 	public void setUp() {
 		con = DBConnection.getInstance();
 	}
@@ -38,14 +46,14 @@ public class TestDatabaseAccess {
 	 */
 	@Test
 	public void wasConnected() {
-		assertNotNull("Connected - connection cannot be null", con);
+		assertNotNull(con, "Connected - connection cannot be null");
 		
 		DBConnection.closeConnection();
 		boolean wasNullified = DBConnection.instanceIsNull();
-		assertTrue("Disconnected - instance set to null", wasNullified);
+		assertTrue(wasNullified, "Disconnected - instance set to null");
 		
 		con = DBConnection.getInstance();
-		assertNotNull("Connected - connection cannot be null", con);		
+		assertNotNull(con, "Connected - connection cannot be null");		
 	}
 	
 	
@@ -126,12 +134,12 @@ public class TestDatabaseAccess {
 	
 	
 	/** Fixture for pay station testing. */
-	@After
+	@AfterEach
 	public void cleanUp() {
 		DBConnection.closeConnection();
 	}	
 	
-	@AfterClass
+	@AfterAll
 	public static void cleanUpWhenFinish() {
 		// Arrange
 		DatabasePBuy dbPbuy = new DatabasePBuy();
@@ -146,7 +154,7 @@ public class TestDatabaseAccess {
 			DBConnection.closeConnection();
 		}
 		// Assert
-		assertEquals("One row deleted", 1, numDeleted );
+		assertEquals(1, numDeleted, "One row deleted");
 	}	
 
 }

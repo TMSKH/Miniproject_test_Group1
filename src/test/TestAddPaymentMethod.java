@@ -44,6 +44,18 @@ public class TestAddPaymentMethod {
 		assertEquals(expectedParkingTime, ps.getDisplayTime(), "Should display 0 min for no coins");
 		assertEquals(expectedCoinAmount, ps.getDisplayAmountInCents(), 0d, "Should display 0 cents for no coins");
 	}	
+	
+	/**
+	 * APExtra2
+	 * Illegal Euro coin
+	 */
+	@Test
+	public void shouldRejectIllegalEuroCoinAndTimeAndPriceDontChange(){
+		assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
+		assertEquals(ps.getDisplayAmountInCents(), 0);
+		assertEquals(ps.getDisplayTime(), 0);
+		
+	}
 
 	/**
 	 * Entering 5 cents should make the display report 2 minutes parking time
@@ -133,27 +145,51 @@ public class TestAddPaymentMethod {
 		 */
 		@Test
 		public void shouldRejectIllegalCurrencyNokCoinAndTimeAndPriceDontChange() {
+			//Arrange
+			int expectedParkingTime = 0;
+			double expectedParkingPrice = 0d;
+			
+			//Act
+			int actualParkingTime = ps.getDisplayTime();
+			double actualParkingPrice = ps.getDisplayAmountInCents();			
+			
+			//Assert
 			assertThrows(IllegalCoinException.class, () -> ps.addPayment(2, ValidCurrency.NOK, ValidCoinType.INTEGER));
-			assertEquals(ps.getDisplayAmountInCents(), 0d,0.5d);
-			assertEquals(ps.getDisplayTime(), 0);
+			assertEquals(expectedParkingTime, actualParkingTime, "Parking time should be 0 minutes.");
+			assertEquals(expectedParkingPrice, actualParkingPrice, "Parking price should be 0 cents.");
 		}
 		
 		
 		/**
 		 * Case: AP5
+		 * new code
 		 */
 		@Test
-		public void shouldThrowExceptionForIllegalCoinAndAcceptValidCoins() {
+		public void shouldThrowExceptionForIllegalCoinAndAcceptValidCoinsPrice1MinuteCost2Cents() {
 			
+			//Arrange
+			int expectedParkingTime = 1;
+			double expectedParkingPrice = 2d;
+			
+			//Act
 			//Valid coin
 			assertDoesNotThrow(() -> ps.addPayment(1, ValidCurrency.EURO, ValidCoinType.FRACTION));
 			//InvalidCoin
 			assertThrows(IllegalCoinException.class, () -> ps.addPayment(3, ValidCurrency.EURO, ValidCoinType.INTEGER));
 			//Valid coin
 			assertDoesNotThrow(() -> ps.addPayment(1, ValidCurrency.EURO, ValidCoinType.FRACTION));
+			int actualParkingTime = ps.getDisplayTime();
+			double actualParkingPrice = ps.getDisplayAmountInCents();
 			
-			assertEquals(1, ps.getDisplayTime());
+			//Assert
+			assertEquals(expectedParkingTime, actualParkingTime, "Parking time should be 1 minute.");
+			assertEquals(expectedParkingPrice, actualParkingPrice, 0d, "Parking should cost 2 cents.");
 		}
+		
+		
+		
+		
+		
 	
 	
 	

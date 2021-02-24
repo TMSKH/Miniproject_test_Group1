@@ -34,6 +34,12 @@ public class TestUpdateFromServer {
 	
 	}
 	
+	/**
+	 * 
+	 * @throws DatabaseLayerException
+	 * @throws SQLException
+	 * Case: UP1
+	 */
 	@Test
 	public void checkIfDatabaseUpdates() throws DatabaseLayerException, SQLException {
 

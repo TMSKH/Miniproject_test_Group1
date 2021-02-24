@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import controllayer.ControlPrice;
 import databaselayer.DBConnection;
@@ -25,7 +25,7 @@ public class TestUpdateFromServer {
 	PreparedStatement preparedstatement;
 	java.sql.Date dateNow;
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		ctrPrice = new ControlPrice();
 		con = DBConnection.getInstance().getDBcon();
@@ -56,7 +56,7 @@ public class TestUpdateFromServer {
 	}
 	
 	
-	@After
+	@AfterEach
 	public void cleanUp() {
 		DBConnection.closeConnection();
 	}	

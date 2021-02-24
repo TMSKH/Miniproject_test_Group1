@@ -1,11 +1,13 @@
 package test;
 
-import static org.junit.Assert.fail;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import controllayer.*;
 import modellayer.Currency.ValidCoinType;
@@ -28,7 +30,7 @@ public class TestIllegalCoin {
 	ControlPayStation ps;
 
 	/** Fixture for pay station testing. */
-	@Before
+	@BeforeEach
 	public void setUp() {
 		ps = new ControlPayStation();
 	}

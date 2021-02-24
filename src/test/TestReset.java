@@ -1,7 +1,10 @@
 package test;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import controllayer.*;
 import databaselayer.DatabaseLayerException;
@@ -17,7 +20,7 @@ public class TestReset {
 	ControlPayStation ps;
 
 	/** Fixture for pay station testing. */
-	@Before
+	@BeforeEach
 	public void setUp() {
 		ps = new ControlPayStation();
 	}
